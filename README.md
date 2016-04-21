@@ -1,19 +1,5 @@
-## 
 
-	• 
-	• Need to install hdf5 thru brew, so make sure your brew is up to date by running 
-	• brew upgrade 
-	• brew update
-	• brew install homebrew/science/hdf5
-#Activate or create a virtualenv
-	• Pip install -r cs-requirements.txt #or manually install them all
-To try to see a file
-	• Run python or ipython in the terminal, make sure you're inside your virtualenv
-	• from tables import *
-	• h5file = open_file("TRAXLZU12903D05F94.h5", mode = "w", title = "Test file")
-	• Follow other tutorials from pytables documentation
-
-analysis of million songs dataset
+Analysis of million songs dataset
 ========================
 
 ### What is this?
