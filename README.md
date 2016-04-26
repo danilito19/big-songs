@@ -34,11 +34,20 @@ To install [pytables](http://www.pytables.org/) (to open h5 files), first create
 source myenv/bin/activate
 ```
 
+Please remember to include the name of your virtualenv inside .gitignore by doing
+
+```
+vim .gitignore
+```
+
+And time myvenv/ (or whatever name). This will not include it in our git repo.
 
 Then install this req.txt file
 ```
 pip install -r cs-requirements.txt
 ```
+
+If this crashes at some point with error about setup.py egg ... don't know how to fix this yet. Try pip install tables, which should work for now.
 
 To check this process worked, make sure you're in the directory where the TRAXLZU12903D05F94.h5 test file is.
 
