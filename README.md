@@ -51,11 +51,14 @@ If this crashes at some point with error about setup.py egg ... don't know how t
 
 To check this process worked, make sure you're in the directory where the TRAXLZU12903D05F94.h5 test file is.
 
-open python or ipython in the terminal, run
+To work with h5 files, we will be using a Python wrapper made by those who worked on the data at Columbia. Here is the [documentation](http://labrosa.ee.columbia.edu/millionsong/pages/code). This in our directory is file called hdf5.py. 
+
+Open python or ipython in the terminal, make sure you're in the same directory with the data and the hdf5.py file
 
 ```
-from tables import *
-h5file = open_file("TRAXLZU12903D05F94.h5", mode = "w", title = "Test file")
+import hdf5
+h5 = hdf5_getters.open_h5_file_read("TRBGBDH12903CE9EA8.h5
+hdf5.get_artist_hotttnesss(h5)
 ``` 
 
-Follow other tutorials in pytables documentation!
+The hdf5.py file has most of the functions we will need to get the attributes for the data.
