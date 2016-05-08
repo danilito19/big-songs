@@ -57,8 +57,44 @@ Open python or ipython in the terminal, make sure you're in the same directory w
 
 ```
 import hdf5
-h5 = hdf5_getters.open_h5_file_read("TRBGBDH12903CE9EA8.h5
+h5 = hdf5_getters.open_h5_file_read("TRBGBDH12903CE9EA8.h5)
 hdf5.get_artist_hotttnesss(h5)
 ``` 
 
 The hdf5.py file has most of the functions we will need to get the attributes for the data.
+
+
+MRjob and h5 files
+-----------
+
+The production version of python library mrjob does not support opening h5 files. We have downloaded the source code and modified the util.py file to accomodate our needs.
+
+Follow these instructions to be able to use this version of mrjob and create your own jobs!
+
+First, MAKE SURE YOU ARE INSIDE YOUR VIRTUAL ENV!
+
+Second, since we will be using our own version of mrjob, run
+
+```
+pip uninstall mrjob
+```
+
+Cd inside the mrjob directory. To use this code, run
+
+```
+python setup.py install
+```
+
+Your mrjobs should now be working.
+
+Some notes
+* the parse_hdf5.py is where the magic is happening. I have included only some attributes so far, like artist year, terms, hottness, but not all. If you will be using a specific attribute, modify this file so it returns your attribute. Note, it must return STRINGS!
+* Inside your mr jobs, the mapper will receive a line. You must split the line with "|"
+```
+artist_name, artist_year, artist_terms, hot = line.split("|")
+```
+
+To check all of this worked, run something like 
+```
+python my-mrjob.py h5_file.h5
+```
