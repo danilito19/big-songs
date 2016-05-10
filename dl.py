@@ -9,9 +9,8 @@ from mrjob.job import MRJob
 class DecadeTerms(MRJob):
 
     def mapper(self, __, line):
-
+        print 'here is line', line
         artist_name, song_year, artist_terms, hot = line.split("|")
-
         # this only yields words with years, does not yields the terms
         # of songs without years
         if int(song_year) in range(1920, 2020):
@@ -36,7 +35,6 @@ if __name__ == '__main__':
     # for f in files:
     #     print get_year_terms(f)
 
-    #def get_all_data():
     DecadeTerms.run()
 
 

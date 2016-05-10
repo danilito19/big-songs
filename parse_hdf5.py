@@ -19,6 +19,7 @@ def parse_file(file_path):
     hottness = get_artist_hotttnesss(h5)
     h5.close()
     artist_terms = ",".join(terms)
+
     return "|".join([name, str(year), artist_terms, str(hottness)])
 
 if __name__ == "__main__":
