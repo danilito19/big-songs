@@ -5,11 +5,10 @@ from mrjob.job import MRJob
 
 ### decades 0: 2000, decade 1: 2010 - 
 
-
 class DecadeTerms(MRJob):
 
     def mapper(self, __, line):
-        print 'here is line', line
+
         artist_name, song_year, artist_terms, hot = line.split("|")
         # this only yields words with years, does not yields the terms
         # of songs without years
@@ -27,13 +26,6 @@ class DecadeTerms(MRJob):
 
 
 if __name__ == '__main__':
-
-    ######################
-    #change this to the dir where your data is
-    #files = glob.glob("../samples/*.h5")
-
-    # for f in files:
-    #     print get_year_terms(f)
 
     DecadeTerms.run()
 
