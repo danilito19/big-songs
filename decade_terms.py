@@ -1,5 +1,4 @@
 import glob
-from hdf5 import *
 from mrjob.job import MRJob
 
 
