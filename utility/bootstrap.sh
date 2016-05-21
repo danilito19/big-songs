@@ -1,3 +1,4 @@
+sudo yum groupinstall "Development Tools"
 sudo yum install git
 git clone https://github.com/danilito19/big-songs ./songs
 cd songs/

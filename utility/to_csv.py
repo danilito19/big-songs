@@ -33,21 +33,21 @@ def parse_file(file_path):
     fadeout = get_start_of_fade_out(h5)
     
     h5.close()
-    return [name, title, str(year), artist_terms, str(hottness), tags, dance, duration, tempo, fadeout]
+    return [name, title, year, artist_terms, hottness, tags, dance, duration, tempo, fadeout]
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print '%s <inputfile> : parse out an input HDF5 file into text string' % sys.argv[0]
         sys.exit(2)
 
     folder = sys.argv[1]
+    output = sys.argv[2]
 
-    with open('output.csv', 'wb') as csvfile:
+    with open(output, 'wb') as csvfile:
         writer = csv.writer(csvfile)
 
         for root, dirnames, filenames in os.walk(folder):
             for filename in fnmatch.filter(filenames, '*.h5'):
-                print 'currently in file: ', os.path.join(root, filename)
                 song = parse_file(os.path.join(root, filename))
                 writer.writerow(song)
 
