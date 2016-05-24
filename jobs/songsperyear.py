@@ -1,6 +1,4 @@
-import glob
 from mrjob.job import MRJob
-import heapq
 
 
 '''
@@ -11,7 +9,8 @@ class SongsPerYear(MRJob):
 
     def mapper(self, __, line):
 
-        artist_name, song_year, artist_terms, hot = line.split("|")
+        line = line.split(",")
+        song_year = line[2]
         yield song_year, 1
 
     def combiner(self, year, counts):
@@ -20,8 +19,6 @@ class SongsPerYear(MRJob):
 
 
     def reducer(self, year, counts):
-        '''
-        '''
 
         yield year, sum(counts)
 

@@ -4,7 +4,7 @@ import heapq
 
 
 '''
-Find top 10 terms overall
+Find top 30 terms overall
 
 MUST RUN THIS FILE WITH
 python myfile.py  --jobconf mapreduce.job.reduces=1 input-file
@@ -15,8 +15,9 @@ class Topk(MRJob):
 
     def mapper(self, __, line):
 
-        artist_name, song_year, artist_terms, hot = line.split("|")
-        for t in artist_terms.split(","):
+        line = line.split(",")
+        artist_terms = line[3]
+        for t in artist_terms.split("|"):
             yield t.lower(), 1
 
     def combiner(self, term, counts):
@@ -28,7 +29,7 @@ class Topk(MRJob):
         '''
         k = []
 
-        for i in range(10):
+        for i in range(30):
           k.append((i, ' '))
 
         heapq.heapify(k)

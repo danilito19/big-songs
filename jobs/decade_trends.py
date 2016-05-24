@@ -36,12 +36,13 @@ class DecadeCounts(MRJob):
 
     def mapper(self, __, line):
 
-        artist_name, song_year, artist_terms, hot = line.split("|")
-        # this only yields words with years, does not yields the terms
-        # of songs without years
+        line = line.split(",")
+        song_year = line[2]
+        artist_terms = line[3]
+
         if int(song_year) in range(1920, 2020):
             decade = int(song_year[2:4])/10
-            for t in artist_terms.split(","):
+            for t in artist_terms.split("|"):
                 yield t.lower(), decade
 
     def combiner(self, term, decades):
@@ -54,10 +55,6 @@ class DecadeCounts(MRJob):
         trends = big_trends(list(decades), 5)
         if len(trends) > 0: 
             print term, trends
-        # self.term_counts[decade] = {}
-        # for t in terms:
-        #     self.term_counts[decade][t] = (self.term_counts[decade].get(t, 0) + 1)
-        # print self.term_counts
 
 if __name__ == '__main__':
 
