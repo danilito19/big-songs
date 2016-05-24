@@ -6,7 +6,7 @@ from mrjob.job import MRJob
 ## calculate delta, which is if words started appearing more
 ## in a certain decade than a previous decade
 
-TREND_FACTOR = 10
+TREND_FACTOR = 50
 
 def big_trends(decades, trend_factor):
     '''
