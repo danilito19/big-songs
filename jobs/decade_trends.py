@@ -1,11 +1,12 @@
-import glob
 from mrjob.job import MRJob
 
 
-### decades 0: 2000, decade 1: 2010 - 
+### decades 0: 2000, decade 1: 2010 
 
 ## calculate delta, which is if words started appearing more
 ## in a certain decade than a previous decade
+
+TREND_FACTOR = 10
 
 def big_trends(decades, trend_factor):
     '''
@@ -52,7 +53,7 @@ class DecadeCounts(MRJob):
 
     def reducer(self, term, decades):
 
-        trends = big_trends(list(decades), 5)
+        trends = big_trends(list(decades), TREND_FACTOR)
         if len(trends) > 0: 
             print term, trends
 

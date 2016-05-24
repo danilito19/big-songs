@@ -19,10 +19,12 @@ class DecadeTerms(MRJob):
                 yield decade, t.lower()
 
     def combiner(self, decade, terms):
+        terms = set(terms)
         for t in terms:
             yield decade, t
 
     def reducer(self, decade, terms):
+        terms = set(terms)
         yield decade, list(terms)
 
 
